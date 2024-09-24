@@ -11,6 +11,7 @@ import (
 
 func main() {
 	godotenv.Load()
+
 	cfg := config.InitConfig()
 
 	db, err := db.NewPostgreSQL(cfg)
