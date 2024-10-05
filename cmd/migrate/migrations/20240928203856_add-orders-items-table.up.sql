@@ -1,9 +1,9 @@
 CREATE TABLE IF NOT EXISTS order_items (
     id SERIAL PRIMARY KEY,
-    orderId INTEGER NOT NULL,
-    productId INTEGER NOT NULL,
+    order_id INTEGER NOT NULL,
+    product_id INTEGER NOT NULL,
     quantity INTEGER NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (orderId) REFERENCES orders(id),
-    FOREIGN KEY (productId) REFERENCES products(id)
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY (product_id) REFERENCES products(id)
 );
