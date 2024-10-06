@@ -1,5 +1,7 @@
 package types
 
+import "time"
+
 type UserStorage interface {
 	GetUserByEmail(email string) (*User, error)
 	GetUserByID(id int) (*User, error)
@@ -24,4 +26,27 @@ type RegisterUser struct {
 type LoginUser struct {
 	Email    string `json:"email" validate:"required,email"`
 	Password string `json:"password" validate:"required"`
+}
+
+type ProductStorage interface {
+	GetProducts() ([]Product, error)
+	CreateProduct(CreateProduct) error
+}
+
+type Product struct {
+	ID          int       `json:"id"`
+	Name        string    `json:"name"`
+	Description string    `json:"description"`
+	Image       string    `json:"image"`
+	Price       float64   `json:"price"`
+	Quantity    int       `json:"quantity"`
+	CreatedAt   time.Time `json:"created_at"`
+}
+
+type CreateProduct struct {
+	Name        string  `json:"name" validate:"required"`
+	Price       float64 `json:"price" validate:"required"`
+	Image       string  `json:"image"`
+	Description string  `json:"description"`
+	Quantity    int     `json:"quantity" validate:"required"`
 }
